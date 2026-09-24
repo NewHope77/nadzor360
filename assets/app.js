@@ -4,11 +4,37 @@ const nav = document.getElementById('nav');
 burger.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   burger.setAttribute('aria-expanded', open);
+  header.classList.toggle('menu-open', open);
 });
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   nav.classList.remove('open');
   burger.setAttribute('aria-expanded', 'false');
+  header.classList.remove('menu-open');
 }));
+
+// Szklany nagłówek po przewinięciu
+const header = document.querySelector('.header');
+const onScroll = () => header.classList.toggle('scrolled', scrollY > 20);
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Animacje pojawiania się
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add('in');
+    io.unobserve(el);
+    setTimeout(() => { el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, 1200);
+  }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.section h2, .section__lead, .plan, .problem, .steps li, .pricelist, .problem-form > *, .faq details, .about > *, .contact > *')
+    .forEach(el => {
+      el.classList.add('reveal');
+      const sib = [...el.parentElement.children].indexOf(el);
+      el.style.transitionDelay = Math.min(sib, 5) * 70 + 'ms';
+      io.observe(el);
+    });
+}
 
 // Walidacja formularzy
 function validate(form) {
@@ -37,7 +63,7 @@ document.querySelectorAll('input[type=file][data-previews]').forEach(input => {
         img.alt = f.name;
         fig.append(img);
       } else {
-        fig.innerHTML = '<figcaption>📄 ' + f.name.replace(/</g, '&lt;') + '</figcaption>';
+        fig.innerHTML = '<figcaption>PDF<br>' + f.name.replace(/</g, '&lt;') + '</figcaption>';
       }
       const del = document.createElement('button');
       del.type = 'button'; del.textContent = '×'; del.setAttribute('aria-label', 'Usuń');
