@@ -1,0 +1,114 @@
+// Menu mobilne
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+}));
+
+// Walidacja formularzy
+function validate(form) {
+  let ok = true;
+  form.querySelectorAll('[required]').forEach(el => {
+    const bad = el.type === 'checkbox' ? !el.checked : !el.value.trim() || (el.type === 'email' && !/^\S+@\S+\.\S+$/.test(el.value));
+    (el.type === 'checkbox' ? el.closest('label') : el).classList.toggle('invalid', bad);
+    if (bad) ok = false;
+  });
+  if (!ok) form.querySelector('.invalid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return ok;
+}
+
+// Podgląd zdjęć
+document.querySelectorAll('input[type=file][data-previews]').forEach(input => {
+  const box = document.getElementById(input.dataset.previews);
+  const label = input.closest('.upload');
+  let files = [];
+  const render = () => {
+    box.innerHTML = '';
+    files.forEach((f, i) => {
+      const fig = document.createElement('figure');
+      if (f.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(f);
+        img.alt = f.name;
+        fig.append(img);
+      } else {
+        fig.innerHTML = '<figcaption>📄 ' + f.name.replace(/</g, '&lt;') + '</figcaption>';
+      }
+      const del = document.createElement('button');
+      del.type = 'button'; del.textContent = '×'; del.setAttribute('aria-label', 'Usuń');
+      del.onclick = () => { files.splice(i, 1); render(); };
+      fig.append(del);
+      box.append(fig);
+    });
+  };
+  const add = list => { files = files.concat([...list]); render(); };
+  input.addEventListener('change', () => { add(input.files); input.value = ''; });
+  ['dragenter', 'dragover'].forEach(e => label.addEventListener(e, ev => { ev.preventDefault(); label.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(e => label.addEventListener(e, ev => { ev.preventDefault(); label.classList.remove('drag'); }));
+  label.addEventListener('drop', ev => add(ev.dataTransfer.files));
+  input.reset = () => { files = []; render(); };
+  input.count = () => files.length;
+});
+
+// Formularz "Mam problem"
+const problemForm = document.getElementById('problemForm');
+problemForm.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!validate(problemForm)) return;
+  problemForm.querySelector('.form__ok').hidden = false;
+  problemForm.querySelector('[type=submit]').disabled = true;
+});
+
+// Zamówienie
+const modal = document.getElementById('orderModal');
+const steps = modal.querySelectorAll('.step');
+const progress = modal.querySelectorAll('.progress li');
+const orderInput = modal.querySelector('input[type=file]');
+function goStep(n) {
+  steps.forEach(s => s.hidden = +s.dataset.step !== n);
+  progress.forEach((li, i) => {
+    li.classList.toggle('is-active', i === n - 1);
+    li.classList.toggle('is-done', i < n - 1 || n === 4);
+  });
+  modal.querySelector('.modal__dialog').scrollTop = 0;
+}
+function openOrder(plan, price) {
+  modal.querySelectorAll('[data-plan]').forEach(el => el.textContent = plan);
+  modal.querySelectorAll('[data-price]').forEach(el => el.textContent = price);
+  document.getElementById('orderForm').reset();
+  modal.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+  orderInput.reset();
+  goStep(1);
+  modal.hidden = false;
+  document.body.classList.add('no-scroll');
+}
+function closeOrder() {
+  modal.hidden = true;
+  document.body.classList.remove('no-scroll');
+}
+document.querySelectorAll('[data-order]').forEach(btn =>
+  btn.addEventListener('click', () => openOrder(btn.dataset.order, btn.dataset.price)));
+modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeOrder));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeOrder(); });
+
+document.getElementById('orderForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (validate(e.target)) goStep(2);
+});
+modal.querySelectorAll('.pay__opt').forEach(b => b.addEventListener('click', () => {
+  modal.querySelectorAll('.pay__opt').forEach(x => x.classList.toggle('is-active', x === b));
+}));
+document.getElementById('payBtn').addEventListener('click', () => goStep(3));
+document.getElementById('sendFiles').addEventListener('click', () => {
+  if (!orderInput.count()) {
+    orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '#d9534f';
+    return;
+  }
+  orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '';
+  goStep(4);
+});
