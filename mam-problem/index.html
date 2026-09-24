@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opisz swój problem — NADZÓR360</title>
+<meta name="description" content="Opisz swój problem budowlany własnymi słowami, dodaj zdjęcia i dokumenty. NADZÓR360 dobierze odpowiedni zakres konsultacji online.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=6">
+</head>
+<body>
+
+<header class="header scrolled" id="top">
+  <div class="container header__inner">
+    <a href="../" class="logo" aria-label="NADZÓR360 — strona główna">
+      <svg class="logo__mark" viewBox="36 26 128 150" aria-hidden="true"><circle cx="100" cy="108" r="60" fill="none" stroke="#3b93dc" stroke-width="8"/><path d="M78 156V86l28-9v79z" fill="#fff"/><path d="M106 156V94l16 5v57z" fill="#c9d6e2"/><g fill="#0a1628"><rect x="84" y="92" width="6" height="6"/><rect x="96" y="89" width="6" height="6"/><rect x="84" y="105" width="6" height="6"/><rect x="96" y="103" width="6" height="6"/><rect x="84" y="118" width="6" height="6"/><rect x="96" y="117" width="6" height="6"/><rect x="84" y="131" width="6" height="6"/><rect x="96" y="131" width="6" height="6"/><rect x="110" y="104" width="3" height="8"/><rect x="116" y="106" width="3" height="8"/><rect x="110" y="119" width="3" height="8"/><rect x="116" y="120" width="3" height="8"/><rect x="110" y="134" width="3" height="8"/><rect x="116" y="134" width="3" height="8"/></g><g stroke="#0a1628" stroke-width="3" stroke-linejoin="round"><path d="M54 70c-1-22 20-38 46-38s47 16 46 38z" fill="#3b93dc"/><path d="M40 67c40-7 80-7 120 0v10c-40-6-80-6-120 0z" fill="#3b93dc"/></g><path d="M88 34c-4 10-6 22-5 35M112 34c4 10 6 22 5 35" stroke="#0a1628" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      <span class="logo__text">NADZÓR<b>360</b></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Menu główne">
+      <a href="../#uslugi">Usługi</a>
+      <a href="../#problemy">Problemy</a>
+      <a href="../#jak">Jak to działa</a>
+      <a href="../#cennik">Cennik</a>
+      <a href="../#faq">FAQ</a>
+      <a href="../#o-nas">O nas</a>
+      <a href="../#kontakt">Kontakt</a>
+      <a href="./" class="btn btn--accent nav__cta" aria-current="page">Mam problem</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="page-hero">
+  <div class="container container--narrow">
+    <p class="eyebrow">Mam problem</p>
+    <h1>Opisz swój problem</h1>
+    <p class="lead">Nie musisz znać terminologii budowlanej. Napisz po prostu, co się wydarzyło.</p>
+  </div>
+</section>
+
+<section class="section section--alt section--tight">
+  <div class="container container--narrow">
+    <form class="wizard" id="wizard" novalidate>
+
+      <fieldset class="wstep" data-need="k1">
+        <legend><span class="wstep__num">1</span><span><small>Krok 1</small>Czego dotyczy sprawa?</span></legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="k1" value="budowa domu"><span>budowa domu</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="remont"><span>remont</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="mieszkanie"><span>mieszkanie</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="dom"><span>dom</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="zakup nieruchomości"><span>zakup nieruchomości</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="odbiór"><span>odbiór</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="wykonawca"><span>wykonawca</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="kosztorys"><span>kosztorys</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="dokumentacja"><span>dokumentacja</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="usterka"><span>usterka</span></label>
+          <label class="chip"><input type="checkbox" name="k1" value="inne"><span>inne</span></label>
+        </div>
+        <p class="wstep__err">Zaznacz przynajmniej jedną odpowiedź.</p>
+      </fieldset>
+
+      <fieldset class="wstep" data-need="opis">
+        <legend><span class="wstep__num">2</span><span><small>Krok 2</small>Co się wydarzyło?</span></legend>
+        <textarea name="opis" rows="7" placeholder="Np. wykonawca po wylaniu fundamentów żąda dopłaty 12 000 zł za „dodatkowe prace”, których nie ma w umowie…"></textarea>
+        <p class="wstep__err">Opisz krótko, co się wydarzyło.</p>
+      </fieldset>
+
+      <fieldset class="wstep" data-need="k3">
+        <legend><span class="wstep__num">3</span><span><small>Krok 3</small>Na jakim etapie jest inwestycja?</span></legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="k3" value="projekt"><span>projekt</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="fundamenty"><span>fundamenty</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="stan surowy"><span>stan surowy</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="instalacje"><span>instalacje</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="elewacja"><span>elewacja</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="wykończenie"><span>wykończenie</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="odbiór"><span>odbiór</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="użytkowany budynek"><span>użytkowany budynek</span></label>
+          <label class="chip"><input type="checkbox" name="k3" value="remont"><span>remont</span></label>
+        </div>
+        <p class="wstep__err">Zaznacz przynajmniej jedną odpowiedź.</p>
+      </fieldset>
+
+      <fieldset class="wstep">
+        <legend><span class="wstep__num">4</span><span><small>Krok 4</small>Dodaj materiały</span></legend>
+        <div class="mats">
+          <label class="mat">
+            <input type="file" multiple accept="image/*" data-mat>
+            <span class="mat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></span>
+            <span class="mat__name">Zdjęcia</span>
+            <span class="mat__count">dodaj pliki</span>
+          </label>
+          <label class="mat">
+            <input type="file" multiple accept=".pdf" data-mat>
+            <span class="mat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></span>
+            <span class="mat__name">PDF</span>
+            <span class="mat__count">dodaj pliki</span>
+          </label>
+          <label class="mat">
+            <input type="file" multiple accept="image/*,.pdf,.doc,.docx" data-mat>
+            <span class="mat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></span>
+            <span class="mat__name">Umowa</span>
+            <span class="mat__count">dodaj pliki</span>
+          </label>
+          <label class="mat">
+            <input type="file" multiple accept="image/*,.pdf,.xls,.xlsx,.doc,.docx" data-mat>
+            <span class="mat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></span>
+            <span class="mat__name">Kosztorys</span>
+            <span class="mat__count">dodaj pliki</span>
+          </label>
+          <label class="mat">
+            <input type="file" multiple accept="image/*,.pdf,.doc,.docx" data-mat>
+            <span class="mat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></span>
+            <span class="mat__name">Protokół</span>
+            <span class="mat__count">dodaj pliki</span>
+          </label>
+          <label class="mat">
+            <input type="file" multiple accept="image/*,.pdf,.doc,.docx,.eml,.msg,.txt" data-mat>
+            <span class="mat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.1-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></span>
+            <span class="mat__name">Korespondencja</span>
+            <span class="mat__count">dodaj pliki</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="wstep" data-need="k5">
+        <legend><span class="wstep__num">5</span><span><small>Krok 5</small>Jakiej pomocy potrzebujesz?</span></legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="k5" value="konsultacja"><span>konsultacja</span></label>
+          <label class="chip"><input type="checkbox" name="k5" value="analiza zdjęć"><span>analiza zdjęć</span></label>
+          <label class="chip"><input type="checkbox" name="k5" value="analiza dokumentów"><span>analiza dokumentów</span></label>
+          <label class="chip"><input type="checkbox" name="k5" value="analiza kosztorysu"><span>analiza kosztorysu</span></label>
+          <label class="chip"><input type="checkbox" name="k5" value="raport"><span>raport</span></label>
+          <label class="chip"><input type="checkbox" name="k5" value="nie wiem"><span>nie wiem</span></label>
+        </div>
+        <p class="wstep__err">Zaznacz przynajmniej jedną odpowiedź.</p>
+      </fieldset>
+
+      <fieldset class="wstep" data-need="kontakt">
+        <legend><span class="wstep__num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><small>Na koniec</small>Jak możemy się z Tobą skontaktować?</span></legend>
+        <div class="form__row">
+          <label class="field">Imię<input name="imie" autocomplete="given-name"></label>
+          <label class="field">E-mail lub telefon<input name="kontakt"></label>
+        </div>
+        <label class="consent"><input type="checkbox" name="zgoda"> Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zgłoszenie.</label>
+        <p class="wstep__err">Podaj imię, e-mail lub telefon i zaznacz zgodę.</p>
+      </fieldset>
+
+      <button class="btn btn--accent btn--lg btn--block wizard__submit" type="submit">WYŚLIJ PROBLEM DO NADZÓR360 <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+
+    <div class="thanks" id="thanks" hidden tabindex="-1">
+      <div class="done__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Dziękujemy. Otrzymaliśmy Twoje zgłoszenie.</h2>
+      <p>Na podstawie przekazanych informacji dobierzemy odpowiedni zakres usługi lub skontaktujemy się z Tobą w celu jego doprecyzowania.</p>
+      <p class="demo-note">Wersja demonstracyjna — zgłoszenie nie zostało wysłane.</p>
+      <a href="../" class="btn btn--outline">Wróć na stronę główną</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© 2026 NADZÓR360 — nadzór budowlany i doradztwo online</span>
+    <a href="#top">Do góry ↑</a>
+  </div>
+</footer>
+
+<script src="../assets/app.js?v=3"></script>
+</body>
+</html>

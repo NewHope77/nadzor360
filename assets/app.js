@@ -81,60 +81,95 @@ document.querySelectorAll('input[type=file][data-previews]').forEach(input => {
   input.count = () => files.length;
 });
 
-// Formularz "Mam problem"
-const problemForm = document.getElementById('problemForm');
-problemForm.addEventListener('submit', e => {
-  e.preventDefault();
-  if (!validate(problemForm)) return;
-  problemForm.querySelector('.form__ok').hidden = false;
-  problemForm.querySelector('[type=submit]').disabled = true;
-});
-
 // Zamówienie
 const modal = document.getElementById('orderModal');
-const steps = modal.querySelectorAll('.step');
-const progress = modal.querySelectorAll('.progress li');
-const orderInput = modal.querySelector('input[type=file]');
-function goStep(n) {
-  steps.forEach(s => s.hidden = +s.dataset.step !== n);
-  progress.forEach((li, i) => {
-    li.classList.toggle('is-active', i === n - 1);
-    li.classList.toggle('is-done', i < n - 1 || n === 4);
-  });
-  modal.querySelector('.modal__dialog').scrollTop = 0;
-}
-function openOrder(plan, price) {
-  modal.querySelectorAll('[data-plan]').forEach(el => el.textContent = plan);
-  modal.querySelectorAll('[data-price]').forEach(el => el.textContent = price);
-  document.getElementById('orderForm').reset();
-  modal.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
-  orderInput.reset();
-  goStep(1);
-  modal.hidden = false;
-  document.body.classList.add('no-scroll');
-}
-function closeOrder() {
-  modal.hidden = true;
-  document.body.classList.remove('no-scroll');
-}
-document.querySelectorAll('[data-order]').forEach(btn =>
-  btn.addEventListener('click', () => openOrder(btn.dataset.order, btn.dataset.price)));
-modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeOrder));
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeOrder(); });
-
-document.getElementById('orderForm').addEventListener('submit', e => {
-  e.preventDefault();
-  if (validate(e.target)) goStep(2);
-});
-modal.querySelectorAll('.pay__opt').forEach(b => b.addEventListener('click', () => {
-  modal.querySelectorAll('.pay__opt').forEach(x => x.classList.toggle('is-active', x === b));
-}));
-document.getElementById('payBtn').addEventListener('click', () => goStep(3));
-document.getElementById('sendFiles').addEventListener('click', () => {
-  if (!orderInput.count()) {
-    orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '#d9534f';
-    return;
+if (modal) {
+  const steps = modal.querySelectorAll('.step');
+  const progress = modal.querySelectorAll('.progress li');
+  const orderInput = modal.querySelector('input[type=file]');
+  function goStep(n) {
+    steps.forEach(s => s.hidden = +s.dataset.step !== n);
+    progress.forEach((li, i) => {
+      li.classList.toggle('is-active', i === n - 1);
+      li.classList.toggle('is-done', i < n - 1 || n === 4);
+    });
+    modal.querySelector('.modal__dialog').scrollTop = 0;
   }
-  orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '';
-  goStep(4);
-});
+  function openOrder(plan, price) {
+    modal.querySelectorAll('[data-plan]').forEach(el => el.textContent = plan);
+    modal.querySelectorAll('[data-price]').forEach(el => el.textContent = price);
+    document.getElementById('orderForm').reset();
+    modal.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    orderInput.reset();
+    goStep(1);
+    modal.hidden = false;
+    document.body.classList.add('no-scroll');
+  }
+  function closeOrder() {
+    modal.hidden = true;
+    document.body.classList.remove('no-scroll');
+  }
+  document.querySelectorAll('[data-order]').forEach(btn =>
+    btn.addEventListener('click', () => openOrder(btn.dataset.order, btn.dataset.price)));
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeOrder));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeOrder(); });
+
+  document.getElementById('orderForm').addEventListener('submit', e => {
+    e.preventDefault();
+    if (validate(e.target)) goStep(2);
+  });
+  modal.querySelectorAll('.pay__opt').forEach(b => b.addEventListener('click', () => {
+    modal.querySelectorAll('.pay__opt').forEach(x => x.classList.toggle('is-active', x === b));
+  }));
+  document.getElementById('payBtn').addEventListener('click', () => goStep(3));
+  document.getElementById('sendFiles').addEventListener('click', () => {
+    if (!orderInput.count()) {
+      orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '#d9534f';
+      return;
+    }
+    orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '';
+    goStep(4);
+  });
+}
+
+// Podstrona "Mam problem"
+const wizard = document.getElementById('wizard');
+if (wizard) {
+  wizard.querySelectorAll('.mat').forEach(mat => {
+    const input = mat.querySelector('input');
+    const count = mat.querySelector('.mat__count');
+    let files = [];
+    const update = () => {
+      mat.classList.toggle('has-files', files.length > 0);
+      count.textContent = files.length ? files.length + (files.length === 1 ? ' plik' : files.length < 5 ? ' pliki' : ' plików') : 'dodaj pliki';
+    };
+    input.addEventListener('change', () => { files = files.concat([...input.files]); input.value = ''; update(); });
+    ['dragenter', 'dragover'].forEach(e => mat.addEventListener(e, ev => { ev.preventDefault(); mat.classList.add('drag'); }));
+    ['dragleave', 'drop'].forEach(e => mat.addEventListener(e, ev => { ev.preventDefault(); mat.classList.remove('drag'); }));
+    mat.addEventListener('drop', ev => { files = files.concat([...ev.dataTransfer.files]); update(); });
+  });
+
+  const checks = {
+    k1: () => wizard.querySelector('[name=k1]:checked'),
+    k3: () => wizard.querySelector('[name=k3]:checked'),
+    k5: () => wizard.querySelector('[name=k5]:checked'),
+    opis: () => wizard.opis.value.trim(),
+    kontakt: () => wizard.imie.value.trim() && wizard.kontakt.value.trim() && wizard.zgoda.checked,
+  };
+  const steps = wizard.querySelectorAll('.wstep[data-need]');
+  const validateStep = st => { const ok = !!checks[st.dataset.need](); st.classList.toggle('has-error', !ok); return ok; };
+  wizard.addEventListener('input', e => {
+    const st = e.target.closest('.wstep.has-error');
+    if (st) validateStep(st);
+  });
+  wizard.addEventListener('submit', e => {
+    e.preventDefault();
+    const bad = [...steps].filter(st => !validateStep(st));
+    if (bad.length) { bad[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    wizard.hidden = true;
+    const thanks = document.getElementById('thanks');
+    thanks.hidden = false;
+    thanks.focus();
+    scrollTo({ top: thanks.getBoundingClientRect().top + scrollY - 120, behavior: 'smooth' });
+  });
+}
