@@ -27,7 +27,7 @@ if ('IntersectionObserver' in window) {
     io.unobserve(el);
     setTimeout(() => { el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, 1200);
   }), { rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.section h2, .section__lead, .plan, .problem, .steps li, .pricelist, .problem-form > *, .faq details, .about > *, .contact > *')
+  document.querySelectorAll('.section h2, .scope__grid li, .section__lead, .plan, .problem, .steps li, .pricelist, .problem-form > *, .faq details, .about > *, .contact > *')
     .forEach(el => {
       el.classList.add('reveal');
       const sib = [...el.parentElement.children].indexOf(el);
