@@ -365,3 +365,5 @@ body.no-scroll{overflow:hidden}
 .legal__sec li::marker{color:var(--accent-d);font-weight:800}
 .page-hero h1{font-size:clamp(30px,4.6vw,52px)}
 @media (max-width:640px){.legal{padding:24px 18px}.legal__toc ol{columns:1}.legal__sec h2{font-size:19px}.footer__links{gap:18px}}
+.legal__firm{border-left:4px solid var(--accent-2);background:#fff8ee;border-radius:0 14px 14px 0;padding:16px 20px;margin-bottom:24px;line-height:1.7}
+.legal__firm p{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-d);margin-bottom:4px}
