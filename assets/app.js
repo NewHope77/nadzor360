@@ -95,9 +95,9 @@ if (modal) {
     });
     modal.querySelector('.modal__dialog').scrollTop = 0;
   }
-  function openOrder(plan, price) {
+  function openOrder(plan, price, suffix = '') {
     modal.querySelectorAll('[data-plan]').forEach(el => el.textContent = plan);
-    modal.querySelectorAll('[data-price]').forEach(el => el.textContent = price);
+    modal.querySelectorAll('[data-price]').forEach(el => el.textContent = price + ' zł' + suffix);
     document.getElementById('orderForm').reset();
     modal.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
     orderInput.reset();
@@ -110,7 +110,7 @@ if (modal) {
     document.body.classList.remove('no-scroll');
   }
   document.querySelectorAll('[data-order]').forEach(btn =>
-    btn.addEventListener('click', () => openOrder(btn.dataset.order, btn.dataset.price)));
+    btn.addEventListener('click', () => openOrder(btn.dataset.order, btn.dataset.price, btn.dataset.suffix)));
   modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeOrder));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeOrder(); });
 

@@ -379,3 +379,25 @@ body.no-scroll{overflow:hidden}
 .steps--6::before{display:none}
 @media (max-width:1020px){.steps--6{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.steps--6{grid-template-columns:1fr}.hero-strip p{font-size:16px;padding:16px 0}}
+
+/* wersja 18:41 — hero, dlaczego, pakiety */
+.hero__tags{color:#ffd18a;font-weight:700;font-size:15px;letter-spacing:.02em;margin:-16px 0 32px}
+.why h2{font-size:clamp(24px,3vw,36px);line-height:1.25;margin-bottom:20px}
+.why p:not(.eyebrow){font-size:19px;max-width:720px}
+.steps--caps h3{text-transform:uppercase;letter-spacing:.04em;font-size:17px}
+.plan h3{font-size:20px;letter-spacing:-.01em;color:var(--ink);text-transform:none}
+.plan--featured h3{color:#fff}
+.plan__sub{font-size:14px;font-weight:700;color:var(--accent-d);margin-top:4px}
+.plan--featured .plan__sub{color:#ffd18a}
+.plan__price small{font-size:18px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:2px}
+.plan--featured .plan__price small{color:rgba(255,255,255,.6)}
+.plan__lab{font-weight:800;font-size:14px;color:var(--ink);margin-bottom:-8px}
+.plan--featured .plan__lab{color:#fff}
+.plan .plan__desc{margin-bottom:16px}
+.plans{display:flex;flex-wrap:wrap;justify-content:center}
+.plans>.plan{flex:0 1 calc((100% - 40px)/3)}
+@media (max-width:1020px){.plans>.plan{flex-basis:calc((100% - 20px)/2)}}
+@media (max-width:640px){.plans>.plan{flex-basis:100%}}
+.plan__lab{margin-bottom:6px;border-top:1px solid var(--line);padding-top:16px}
+.plan--featured .plan__lab{border-color:rgba(255,255,255,.12)}
+.plan__lab+ul{border-top:0;padding-top:0}

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=13">
+<link rel="stylesheet" href="assets/style.css?v=16">
 </head>
 <body>
 
@@ -38,18 +38,17 @@
 <section class="hero">
   <div class="container hero__inner">
     <div class="hero__text">
-      <p class="eyebrow">Nadzór budowlany · doradztwo online</p>
-      <h1>Masz problem <span class="nowrap">z budową?</span></h1>
-      <p class="lead">Nie wiesz, czy wykonawca zrobił coś prawidłowo? Masz wątpliwości dotyczące kosztorysu, dokumentacji, jakości robót albo odbioru?</p>
-      <p class="lead lead--sub">Prześlij zdjęcia, dokumenty lub opis sytuacji. Nadzór360 pomoże Ci uporządkować problem, wskazać kwestie wymagające sprawdzenia i określić możliwe dalsze działania.</p>
+      <p class="eyebrow">Twój budowlany ekspert online</p>
+      <h1>Masz problem <span class="nowrap">na budowie?</span></h1>
+      <p class="lead">Wyślij zdjęcia. Sprawdzimy, co powinieneś zrobić.</p>
+      <p class="hero__tags">Konsultacje • analiza zdjęć • dokumentacja • kontrola etapów budowy</p>
       <div class="hero__cta">
-        <a href="mam-problem/" class="btn btn--accent btn--lg">Mam problem — sprawdź <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#uslugi" class="btn btn--ghost btn--lg">Zobacz usługi</a>
+        <a href="mam-problem/" class="btn btn--accent btn--lg">Sprawdź moją budowę <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button type="button" class="btn btn--ghost btn--lg" data-order="Mam problem na budowie" data-price="199">Konsultacja online</button>
       </div>
       <ul class="hero__trust">
-        <li>Ceny od 99 zł</li>
+        <li>Ceny od 199 zł</li>
         <li>Płatność BLIK / karta</li>
-        <li>Odpowiedź nawet w 24 h</li>
       </ul>
     </div>
     <div class="hero__card" aria-hidden="true">
@@ -114,18 +113,25 @@
   </div>
 </section>
 
+<!-- DLACZEGO -->
+<section class="section section--dark why" id="dlaczego">
+  <div class="container container--narrow">
+    <p class="eyebrow">Dlaczego Nadzór360?</p>
+    <h2>Budowa domu to dziesiątki decyzji, dokumentów i etapów, na których łatwo przeoczyć kosztowny błąd.</h2>
+    <p>Nadzór360 pozwala skonsultować problem z osobą posiadającą doświadczenie w procesie budowlanym — bez konieczności każdorazowego umawiania wizyty na budowie.</p>
+  </div>
+</section>
+
 <!-- JAK TO DZIAŁA -->
 <section class="section" id="jak">
   <div class="container">
-    <p class="eyebrow">Jak działa Nadzór360?</p>
+    <p class="eyebrow">Jak to działa?</p>
     <h2>Od problemu do konkretnego planu działania</h2>
-    <ol class="steps steps--6">
-      <li><span>01</span><h3>Opisz</h3><p>Napisz własnymi słowami, co się wydarzyło.</p></li>
-      <li><span>02</span><h3>Prześlij</h3><p>Dodaj zdjęcia, umowę, kosztorys, projekt, protokół lub inne dokumenty.</p></li>
-      <li><span>03</span><h3>Wybierz</h3><p>Wybierz usługę odpowiednią do Twojej sytuacji.</p></li>
-      <li><span>04</span><h3>Analizujemy</h3><p>Sprawdzamy przekazane materiały w zakresie objętym wybraną usługą.</p></li>
-      <li><span>05</span><h3>Otrzymujesz</h3><p>W zależności od usługi: konsultację, analizę, raport lub plan dalszego działania.</p></li>
-      <li><span>06</span><h3>Działasz</h3><p>Wiesz, jakie kwestie wymagają dalszego sprawdzenia i jakie mogą być kolejne kroki.</p></li>
+    <ol class="steps steps--caps">
+      <li><span>1</span><h3>Wyślij</h3><p>Zdjęcia, film lub dokumentację.</p></li>
+      <li><span>2</span><h3>Opisz problem</h3><p>Napisz, co Cię niepokoi.</p></li>
+      <li><span>3</span><h3>Zapłać online</h3><p>Wybierz odpowiednią usługę.</p></li>
+      <li><span>4</span><h3>Otrzymaj ocenę</h3><p>Dostajesz odpowiedź i konkretne zalecenia.</p></li>
     </ol>
   </div>
 </section>
@@ -138,71 +144,72 @@
     <p class="section__lead">Płacisz online, dodajesz zdjęcia i dokumenty, a my zajmujemy się resztą.</p>
     <div class="plans">
       <article class="plan">
-        <h3>START</h3>
-        <p class="plan__price">99 zł</p>
-        <p class="plan__desc">Szybka odpowiedź na jedno konkretne pytanie.</p>
+        <h3>Mam problem na budowie</h3>
+        <p class="plan__sub">Zdjęcia + problem + 30 minut z ekspertem</p>
+        <p class="plan__price">199 zł</p>
+        <p class="plan__desc">Prześlij do 10 zdjęć i opisz problem.</p>
+        <p class="plan__lab">Otrzymujesz:</p>
         <ul>
-          <li>Analiza do 5 zdjęć</li>
-          <li>Pisemna odpowiedź</li>
-          <li>Czas: do 48 h</li>
+          <li>analizę przesłanych zdjęć</li>
+          <li>30-minutową konsultację online</li>
+          <li>omówienie zauważonych kwestii</li>
+          <li>wskazanie elementów wymagających dalszego sprawdzenia</li>
+          <li>zalecenia dotyczące kolejnych działań</li>
         </ul>
-        <button class="btn btn--outline" data-order="START" data-price="99">Zamów</button>
+        <button class="btn btn--outline" data-order="Mam problem na budowie" data-price="199">Kup – 199 zł</button>
       </article>
       <article class="plan">
-        <h3>ONLINE</h3>
-        <p class="plan__price">199 zł</p>
-        <p class="plan__desc">Rozmowa wideo ze specjalistą — zadajesz pytania na żywo.</p>
+        <h3>Sprawdź moje zdjęcia</h3>
+        <p class="plan__sub">Analiza zdjęć</p>
+        <p class="plan__price">299 zł</p>
+        <p class="plan__desc">Prześlij zdjęcia — przygotujemy krótką opinię techniczną / listę uwag.</p>
+        <p class="plan__lab">Otrzymujesz:</p>
         <ul>
-          <li>Wideokonsultacja 45 min</li>
-          <li>Przegląd zdjęć i dokumentów</li>
-          <li>Podsumowanie e-mailem</li>
+          <li>analizę przesłanych zdjęć</li>
+          <li>krótką opinię techniczną / listę uwag</li>
         </ul>
-        <button class="btn btn--outline" data-order="ONLINE" data-price="199">Zamów</button>
+        <button class="btn btn--outline" data-order="Sprawdź moje zdjęcia" data-price="299">Kup – 299 zł</button>
+      </article>
+      <article class="plan">
+        <h3>Sprawdź dokumentację</h3>
+        <p class="plan__sub">Analiza dokumentacji</p>
+        <p class="plan__price">399 zł</p>
+        <p class="plan__desc">Prześlij projekt, protokoły, kosztorys lub ofertę wykonawcy.</p>
+        <p class="plan__lab">Otrzymujesz:</p>
+        <ul>
+          <li>analizę przesłanej dokumentacji</li>
+          <li>krótką opinię techniczną / listę uwag</li>
+        </ul>
+        <button class="btn btn--outline" data-order="Sprawdź dokumentację" data-price="399">Kup – 399 zł</button>
       </article>
       <article class="plan plan--featured">
-        <span class="plan__badge">Najczęściej wybierany</span>
-        <h3>ANALIZA</h3>
-        <p class="plan__price">349 zł</p>
-        <p class="plan__desc">Szczegółowa opinia o usterkach, pęknięciach lub jakości prac.</p>
-        <ul>
-          <li>Analiza do 30 zdjęć</li>
-          <li>Pisemna opinia z zaleceniami (PDF)</li>
-          <li>Czas: do 3 dni roboczych</li>
-        </ul>
-        <button class="btn btn--accent" data-order="ANALIZA" data-price="349">Zamów</button>
-      </article>
-      <article class="plan">
-        <h3>PRO</h3>
+        <span class="plan__badge">Polecane</span>
+        <h3>Przygotuj mnie do odbioru</h3>
+        <p class="plan__sub">„Druga opinia” przed odbiorem</p>
         <p class="plan__price">499 zł</p>
-        <p class="plan__desc">Kompleksowe wsparcie przy sporze lub większym problemie.</p>
+        <p class="plan__desc">„Nie wiesz, czy wykonawca prawidłowo wykonał prace? Prześlij zdjęcia i dokumentację – sprawdzimy najważniejsze elementy przed odbiorem.”</p>
+        <p class="plan__lab">Otrzymujesz:</p>
         <ul>
-          <li>Analiza + 2 wideokonsultacje</li>
-          <li>Raport PDF do przekazania wykonawcy</li>
-          <li>Pomoc w piśmie do wykonawcy</li>
+          <li>sprawdzenie najważniejszych elementów przed odbiorem</li>
         </ul>
-        <button class="btn btn--outline" data-order="PRO" data-price="499">Zamów</button>
+        <button class="btn btn--accent" data-order="Przygotuj mnie do odbioru" data-price="499">Kup – 499 zł</button>
       </article>
       <article class="plan">
-        <h3>KOSZTORYS</h3>
-        <p class="plan__price"><small>od</small> 299 zł</p>
-        <p class="plan__desc">Weryfikacja kosztorysu lub oferty wykonawcy.</p>
+        <h3>Stały nadzór online</h3>
+        <p class="plan__sub">„Wirtualny inspektor inwestora”</p>
+        <p class="plan__price">299 zł<small>/mies.</small></p>
+        <p class="plan__desc">Inwestor ma swojego inspektora budowlanego online przez cały okres budowy.</p>
+        <p class="plan__lab">Klient otrzymuje:</p>
         <ul>
-          <li>Sprawdzenie ilości i cen</li>
-          <li>Wskazanie zawyżonych pozycji</li>
-          <li>Czas: do 5 dni roboczych</li>
+          <li>2 konsultacje online miesięcznie</li>
+          <li>analizę do 40 zdjęć</li>
+          <li>analizę krótkich filmów</li>
+          <li>kontrolę kolejnego etapu budowy</li>
+          <li>listę wykrytych problemów</li>
+          <li>zalecenia dla inwestora</li>
+          <li>checklistę przed odbiorem kolejnego etapu</li>
         </ul>
-        <button class="btn btn--outline" data-order="KOSZTORYS" data-price="299">Zamów</button>
-      </article>
-      <article class="plan plan--sos">
-        <h3>SOS</h3>
-        <p class="plan__price">299 zł</p>
-        <p class="plan__desc">Pilna sprawa — np. odbiór jutro albo ekipa właśnie leje beton.</p>
-        <ul>
-          <li>Kontakt w ciągu 24 h</li>
-          <li>Konsultacja telefoniczna / wideo</li>
-          <li>Konkretne zalecenia od razu</li>
-        </ul>
-        <button class="btn btn--outline" data-order="SOS" data-price="299">Zamów</button>
+        <button class="btn btn--outline" data-order="Stały nadzór online" data-price="299" data-suffix="/mies.">Kup – 299 zł/mies.</button>
       </article>
     </div>
   </div>
@@ -236,12 +243,11 @@
     <p class="eyebrow">Cennik</p>
     <h2>Wszystkie ceny w jednym miejscu</h2>
     <div class="pricelist">
-      <div class="pricelist__row"><span>START — pytanie + do 5 zdjęć</span><b>99 zł</b></div>
-      <div class="pricelist__row"><span>ONLINE — wideokonsultacja 45 min</span><b>199 zł</b></div>
-      <div class="pricelist__row"><span>ANALIZA — opinia pisemna PDF</span><b>349 zł</b></div>
-      <div class="pricelist__row"><span>PRO — kompleksowe wsparcie</span><b>499 zł</b></div>
-      <div class="pricelist__row"><span>KOSZTORYS — weryfikacja oferty</span><b>od 299 zł</b></div>
-      <div class="pricelist__row"><span>SOS — pilna konsultacja do 24 h</span><b>299 zł</b></div>
+      <div class="pricelist__row"><span>Mam problem na budowie — Zdjęcia + problem + 30 minut z ekspertem</span><b>199 zł</b></div>
+      <div class="pricelist__row"><span>Sprawdź moje zdjęcia — Analiza zdjęć</span><b>299 zł</b></div>
+      <div class="pricelist__row"><span>Sprawdź dokumentację — Analiza dokumentacji</span><b>399 zł</b></div>
+      <div class="pricelist__row"><span>Przygotuj mnie do odbioru — „Druga opinia” przed odbiorem</span><b>499 zł</b></div>
+      <div class="pricelist__row"><span>Stały nadzór online — „Wirtualny inspektor inwestora”</span><b>299 zł/mies.</b></div>
     </div>
     <p class="note">Ceny brutto. Po zakupie otrzymujesz fakturę na e-mail.</p>
   </div>
@@ -274,8 +280,8 @@
       <details><summary>Czy możecie sprawdzić kosztorys?</summary><p>Tak. Możemy przeanalizować przekazany kosztorys lub ofertę w zakresie odpowiadającym wybranej usłudze.</p></details>
       <details><summary>Czy możecie sprawdzić umowę z wykonawcą?</summary><p>Możemy wskazać kwestie wymagające wyjaśnienia z perspektywy technicznego zakresu robót. Analiza prawna wymaga odpowiednio kwalifikowanej usługi prawnej.</p></details>
       <details><summary>Czy możecie powiedzieć, kto ma rację – ja czy wykonawca?</summary><p>Celem analizy jest wskazanie faktów, dokumentów i kwestii technicznych wymagających weryfikacji. W sprawach wymagających oceny prawnej należy skorzystać z pomocy prawnika.</p></details>
-      <details><summary>Czy mogę dostać raport?</summary><p>Tak. Raport jest elementem wybranych usług, przede wszystkim Nadzór360 ANALIZA i Nadzór360 PRO.</p></details>
-      <details><summary>Jak szybko otrzymam odpowiedź?</summary><p>Termin zależy od wybranej usługi. Usługa SOS jest obsługiwana priorytetowo zgodnie z warunkami zamówienia.</p></details>
+      <details><summary>Czy mogę dostać raport?</summary><p>Tak. Raport jest elementem wybranych usług.</p></details>
+      <details><summary>Jak szybko otrzymam odpowiedź?</summary><p>Termin zależy od wybranej usługi.</p></details>
       <details><summary>Czy mogę anulować zamówienie?</summary><p>Zasady odstąpienia od umowy zależą m.in. od rodzaju usługi i momentu rozpoczęcia jej wykonywania. Szczegółowe informacje znajdują się w <a href="regulamin/">regulaminie</a>.</p></details>
       <details><summary>Czy moje dokumenty są bezpieczne?</summary><p>Materiały są wykorzystywane w celu realizacji zamówionej usługi zgodnie z zasadami określonymi w polityce prywatności.</p></details>
     </div>
@@ -333,7 +339,7 @@
     <ol class="progress"><li class="is-active">Dane</li><li>Płatność</li><li>Zdjęcia</li></ol>
 
     <div class="step" data-step="1">
-      <h3 id="orderTitle">Pakiet <span data-plan></span> — <span data-price></span> zł</h3>
+      <h3 id="orderTitle">Pakiet <span data-plan></span> — <span data-price></span></h3>
       <form class="form" id="orderForm" novalidate>
         <div class="form__row">
           <label>Imię i nazwisko<input name="imie" required autocomplete="name"></label>
@@ -348,14 +354,14 @@
     </div>
 
     <div class="step" data-step="2" hidden>
-      <h3>Płatność: <span data-price></span> zł</h3>
+      <h3>Płatność: <span data-price></span></h3>
       <div class="pay">
         <button class="pay__opt is-active" type="button">BLIK</button>
         <button class="pay__opt" type="button">Karta</button>
         <button class="pay__opt" type="button">Przelew online</button>
       </div>
       <p class="demo-note">Wersja demonstracyjna — płatność jest symulowana. Po uruchomieniu strony podłączymy bramkę (np. Przelewy24 / PayU).</p>
-      <button class="btn btn--accent btn--lg btn--block" type="button" id="payBtn">Zapłać <span data-price></span> zł</button>
+      <button class="btn btn--accent btn--lg btn--block" type="button" id="payBtn">Zapłać <span data-price></span></button>
     </div>
 
     <div class="step" data-step="3" hidden>
@@ -380,6 +386,6 @@
   </div>
 </div>
 
-<script src="assets/app.js?v=5"></script>
+<script src="assets/app.js?v=6"></script>
 </body>
 </html>
