@@ -149,6 +149,10 @@ if (wizard) {
     mat.addEventListener('drop', ev => { files = files.concat([...ev.dataTransfer.files]); update(); });
   });
 
+  // ?sprawa=… z kart „Z czym możesz przyjść?” — zaznacz od razu
+  const sprawa = new URLSearchParams(location.search).get('sprawa');
+  if (sprawa) wizard.querySelectorAll('.wstep:first-of-type input[type=checkbox]').forEach(c => { if (c.value === sprawa) c.checked = true; });
+
   const checks = {
     k1: () => wizard.querySelector('[name=k1]:checked'),
     k3: () => wizard.querySelector('[name=k3]:checked'),

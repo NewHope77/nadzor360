@@ -367,3 +367,15 @@ body.no-scroll{overflow:hidden}
 @media (max-width:640px){.legal{padding:24px 18px}.legal__toc ol{columns:1}.legal__sec h2{font-size:19px}.footer__links{gap:18px}}
 .legal__firm{border-left:4px solid var(--accent-2);background:#fff8ee;border-radius:0 14px 14px 0;padding:16px 20px;margin-bottom:24px;line-height:1.7}
 .legal__firm p{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-d);margin-bottom:4px}
+
+/* hero: tekst klientki */
+.lead--sub{font-size:17px;margin-top:-18px;color:rgba(255,255,255,.62)}
+.hero-strip{background:var(--grad);color:var(--ink)}
+.hero-strip p{padding:18px 0;font-weight:700;font-size:18px;text-align:center}
+.hero-strip a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.problem .link-btn{text-decoration:none;text-transform:uppercase;letter-spacing:.04em;font-size:14px}
+/* 6 kroków */
+.steps--6{grid-template-columns:repeat(3,1fr)}
+.steps--6::before{display:none}
+@media (max-width:1020px){.steps--6{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.steps--6{grid-template-columns:1fr}.hero-strip p{font-size:16px;padding:16px 0}}
