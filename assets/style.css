@@ -424,3 +424,17 @@ body.no-scroll{overflow:hidden}
 @media (max-width:640px){.logo__img{height:54px}.logo__badge{padding:3px 8px}}
 @media (min-width:1021px){.header__inner{height:90px}.logo__img{height:76px}html{scroll-padding-top:100px}}
 @media (max-width:1020px){.logo__img{height:62px}.logo__badge{padding:3px 8px}}
+
+/* Biały nagłówek — logo klientki na przezroczystym tle, bez plakietki */
+.header,.header.scrolled,.header.menu-open{background:rgba(255,255,255,.97);color:var(--ink);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header.scrolled{box-shadow:0 6px 20px rgba(10,22,40,.08)}
+.logo__badge{background:none;box-shadow:none;padding:0;border-radius:0}
+.nav a{color:var(--text)}
+.nav a:hover{color:var(--ink);background:var(--bg-alt)}
+.nav .nav__cta,.nav .nav__cta:hover{color:var(--ink)}
+.burger{background:var(--bg-alt);border-color:var(--line)}
+.burger span{background:var(--ink)}
+@media (max-width:1020px){
+  .nav{background:#fff;box-shadow:0 20px 30px rgba(10,22,40,.12)}
+  .nav a{color:var(--ink);border-bottom-color:var(--line)}
+}
