@@ -418,3 +418,9 @@ body.no-scroll{overflow:hidden}
 .gallery figure{margin:0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:var(--shadow);max-width:640px}
 .gallery img{width:100%;height:auto}
 .gallery{grid-template-columns:repeat(auto-fit,minmax(260px,420px));justify-content:center}
+/* logo klientki — oryginalny plik */
+.logo__badge{padding:4px 10px}
+.logo__img{height:62px;width:auto;display:block}
+@media (max-width:640px){.logo__img{height:54px}.logo__badge{padding:3px 8px}}
+@media (min-width:1021px){.header__inner{height:90px}.logo__img{height:76px}html{scroll-padding-top:100px}}
+@media (max-width:1020px){.logo__img{height:62px}.logo__badge{padding:3px 8px}}
