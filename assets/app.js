@@ -79,27 +79,30 @@ document.querySelectorAll('input[type=file][data-previews]').forEach(input => {
   label.addEventListener('drop', ev => add(ev.dataTransfer.files));
   input.reset = () => { files = []; render(); };
   input.count = () => files.length;
+  input.getFiles = () => files.slice();
 });
 
 // Zamówienie
 const modal = document.getElementById('orderModal');
 if (modal) {
   const steps = modal.querySelectorAll('.step');
-  const progress = modal.querySelectorAll('.progress li');
+  const form = document.getElementById('orderForm');
   const orderInput = modal.querySelector('input[type=file]');
+  const errBox = document.getElementById('orderError');
+  const submitBtn = form.querySelector('[type=submit]');
+  const btnLabel = submitBtn.firstChild.textContent;
   function goStep(n) {
     steps.forEach(s => s.hidden = +s.dataset.step !== n);
-    progress.forEach((li, i) => {
-      li.classList.toggle('is-active', i === n - 1);
-      li.classList.toggle('is-done', i < n - 1 || n === 4);
-    });
     modal.querySelector('.modal__dialog').scrollTop = 0;
   }
   function openOrder(plan, price, suffix = '') {
     modal.querySelectorAll('[data-plan]').forEach(el => el.textContent = plan);
     modal.querySelectorAll('[data-price]').forEach(el => el.textContent = price + ' zł' + suffix);
-    document.getElementById('orderForm').reset();
+    form.reset();
+    form.pakiet.value = plan;
     modal.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    errBox.hidden = true;
+    submitBtn.disabled = false; submitBtn.firstChild.textContent = btnLabel;
     orderInput.reset();
     goStep(1);
     modal.hidden = false;
@@ -114,21 +117,25 @@ if (modal) {
   modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeOrder));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeOrder(); });
 
-  document.getElementById('orderForm').addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    if (validate(e.target)) goStep(2);
-  });
-  modal.querySelectorAll('.pay__opt').forEach(b => b.addEventListener('click', () => {
-    modal.querySelectorAll('.pay__opt').forEach(x => x.classList.toggle('is-active', x === b));
-  }));
-  document.getElementById('payBtn').addEventListener('click', () => goStep(3));
-  document.getElementById('sendFiles').addEventListener('click', () => {
-    if (!orderInput.count()) {
-      orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '#d9534f';
-      return;
+    if (!validate(form)) return;
+    errBox.hidden = true;
+    // Wersja statyczna (podgląd) nie ma serwera — tylko pokazujemy podziękowanie.
+    if (!form.dataset.endpoint) { goStep(2); return; }
+    const fd = new FormData(form);
+    orderInput.getFiles().forEach(f => fd.append('pliki[]', f));
+    submitBtn.disabled = true; submitBtn.firstChild.textContent = 'Wysyłanie… ';
+    try {
+      const r = await fetch(form.dataset.endpoint, { method: 'POST', body: fd, credentials: 'same-origin' });
+      const j = await r.json();
+      if (j && j.success) { goStep(2); return; }
+      errBox.textContent = (j && j.data && j.data.message) || 'Nie udało się wysłać zamówienia. Spróbuj ponownie.';
+    } catch (err) {
+      errBox.textContent = 'Nie udało się wysłać zamówienia. Sprawdź połączenie i spróbuj ponownie.';
     }
-    orderInput.closest('.upload').querySelector('.upload__box').style.borderColor = '';
-    goStep(4);
+    errBox.hidden = false;
+    submitBtn.disabled = false; submitBtn.firstChild.textContent = btnLabel;
   });
 }
 
