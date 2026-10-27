@@ -440,3 +440,7 @@ body.no-scroll{overflow:hidden}
 }
 .pay-note{font-size:14px;background:var(--bg-alt);padding:12px 14px;border-radius:12px;color:var(--muted)}
 #orderForm .btn[disabled]{opacity:.7;cursor:wait}
+.plan__time{font-size:14px;font-weight:700;color:var(--ink);background:var(--bg-alt);border-radius:10px;padding:6px 10px;margin:0 0 12px;align-self:flex-start}
+.plan--featured .plan__time{background:rgba(255,255,255,.08);color:#fff}
+.pay-note a,.consent a{color:var(--accent-d);font-weight:700}
+.footer__links{flex-wrap:wrap;row-gap:8px}
