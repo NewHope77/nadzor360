@@ -129,7 +129,10 @@ if (modal) {
     try {
       const r = await fetch(form.dataset.endpoint, { method: 'POST', body: fd, credentials: 'same-origin' });
       const j = await r.json();
-      if (j && j.success) { goStep(2); return; }
+      if (j && j.success) {
+        if (j.data && j.data.redirect) { submitBtn.firstChild.textContent = 'Przekierowanie do płatności… '; location.href = j.data.redirect; return; }
+        goStep(2); return;
+      }
       errBox.textContent = (j && j.data && j.data.message) || 'Nie udało się wysłać zamówienia. Spróbuj ponownie.';
     } catch (err) {
       errBox.textContent = 'Nie udało się wysłać zamówienia. Sprawdź połączenie i spróbuj ponownie.';
